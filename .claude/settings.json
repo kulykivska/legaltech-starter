@@ -1,0 +1,15 @@
+{
+  "extraKnownMarketplaces": {
+    "personal": {
+      "source": { "source": "github", "repo": "kulykivska/claude-plugins" }
+    }
+  },
+  "enabledPlugins": {
+    "content@personal": true,
+    "brand@personal": true,
+    "seo@personal": true,
+    "research@personal": true,
+    "guardrails@personal": true,
+    "pre-push-review@personal": true
+  }
+}
