@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name | Law Student, Chicago</title>
+  <meta name="description" content="Your Name, law student in Chicago. Practice interests, languages and contact.">
+  <style>
+    :root {
+      --bg: #fbfbf9; --fg: #1d2321; --muted: #5d6763; --line: #dde2df; --accent: #24564b;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #141817; --fg: #e5ebe8; --muted: #9ba8a3; --line: #2f3935; --accent: #86c7b6; color-scheme: dark; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); line-height: 1.6; }
+    main, footer { max-width: 720px; margin: 0 auto; padding: 48px 20px; }
+    h1 { font-size: 2.2rem; line-height: 1.2; margin: 0 0 8px; }
+    h2 { font-size: 1.2rem; margin: 32px 0 8px; }
+    .role { color: var(--muted); margin: 0; }
+    .lang { display: flex; gap: 8px; margin-bottom: 32px; }
+    .lang button { font: inherit; padding: 4px 12px; border: 1px solid var(--line); background: none; color: var(--fg); border-radius: 4px; cursor: pointer; }
+    .lang button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+    a { color: var(--accent); }
+    .note { font-size: .9rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; margin-top: 40px; }
+    footer { padding-top: 0; font-size: .85rem; color: var(--muted); }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="uk" aria-pressed="false">Українська</button>
+    </div>
+
+    <section data-lang="en">
+      <h1>Your Name</h1>
+      <p class="role">Law student, Chicago. English, Ukrainian.</p>
+      <h2>About</h2>
+      <p>Two or three sentences about you: what you study, what kind of law you want to practise, and who you want to help.</p>
+      <h2>Interests</h2>
+      <ul>
+        <li>Practice area one</li>
+        <li>Practice area two</li>
+      </ul>
+      <h2>Contact</h2>
+      <p>Email: you@example.com<br>LinkedIn: <a href="https://www.linkedin.com/">linkedin.com/in/your-name</a></p>
+      <p class="note">This site is general information, not legal advice.</p>
+    </section>
+
+    <section data-lang="uk" lang="uk" hidden>
+      <h1>Ваше ім'я</h1>
+      <p class="role">Студентка-юристка, Чикаго. Англійська, українська.</p>
+      <h2>Про мене</h2>
+      <p>Два-три речення про вас: що вивчаєте, яким правом хочете займатися і кому хочете допомагати.</p>
+      <h2>Інтереси</h2>
+      <ul>
+        <li>Перша сфера практики</li>
+        <li>Друга сфера практики</li>
+      </ul>
+      <h2>Контакти</h2>
+      <p>Пошта: you@example.com<br>LinkedIn: <a href="https://www.linkedin.com/">linkedin.com/in/your-name</a></p>
+      <p class="note">Інформація на сайті має загальний характер і не є юридичною консультацією.</p>
+    </section>
+  </main>
+
+  <footer>
+    Built with Claude Code and the
+    <a href="https://github.com/kulykivska/claude-plugins">claude-plugins</a>
+    by Yuliia Kulykivska.
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll(".lang button");
+    const sections = document.querySelectorAll("section[data-lang]");
+    function show(lang) {
+      sections.forEach(s => { s.hidden = s.dataset.lang !== lang; });
+      buttons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+      document.documentElement.lang = lang;
+    }
+    buttons.forEach(b => b.addEventListener("click", () => show(b.dataset.lang)));
+  </script>
+</body>
+</html>
